@@ -1,6 +1,7 @@
 import * as types from './actions/types';
 const initialState = {
-	gameStarted: false
+	gameStarted: false,
+	whosTurn: 1
 };
 
 const reducers = function (state = initialState, action) {
