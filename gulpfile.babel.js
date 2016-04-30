@@ -6,10 +6,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 gulp.task('watch', () => {
 	gulp.watch('public/sass/**/*.scss', ['sass']);
 	gulp.watch([
-		'**/*.js',
-		'**/*.jsx',
+		'public/**/*.js',
+		'public/**/*.jsx',
 		'!node_modules/**',
-		'!dist/**'
+		'!public/dist/**'
 	], ['test']);
 	gulp.start('watchify');
 });

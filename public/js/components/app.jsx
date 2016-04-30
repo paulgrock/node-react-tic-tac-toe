@@ -2,13 +2,22 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Board from './board.jsx';
 
+import endTurn from '../actions/end-turn';
+
 const App = React.createClass({
-	cells: 3,
-	rows: 3,
+	handleEndTurn(e) {
+		e.preventDefault();
+		const coordinate = e.target.value.split('-');
+		const row = Number(coordinate[0]);
+		const column = Number(coordinate[1]);
+		this.props.dispatch(endTurn(row, column, 'X'));
+		console.log(e.target.value);
+		console.log(row, column);
+	},
 	render() {
 		return (
 			<main className="main-container">
-				<Board cells={this.cells} rows={this.rows} />
+				<Board board={this.props.board} endTurn={this.handleEndTurn} />
 			</main>
 		);
 	}
