@@ -7,12 +7,9 @@ import endTurn from '../actions/end-turn';
 const App = React.createClass({
 	handleEndTurn(e) {
 		e.preventDefault();
-		const coordinate = e.target.value.split('-');
-		const row = Number(coordinate[0]);
-		const column = Number(coordinate[1]);
-		this.props.dispatch(endTurn(row, column, 'X'));
-		console.log(e.target.value);
-		console.log(row, column);
+		const index = Number(e.target.value)
+		const player = this.props.player === 'X' ? 'O' : 'X';
+		this.props.dispatch(endTurn(index, player));
 	},
 	render() {
 		return (
