@@ -3,13 +3,13 @@ import BoardCell from './board-cell.jsx';
 
 export default React.createClass({
 	render() {
-		const {row, rowPosition, rows, endTurn} = this.props;
+		const {row, rowPosition, rows, endTurn, gameOver} = this.props;
 		let offset = rowPosition;
 		if (rowPosition) {
 			offset = rowPosition * rows.length;
 		}
 		const boardCells = row.map((cell, idx) => {
-			return <BoardCell key={`board-cell-${idx}`} cell={cell} position={offset + idx} endTurn={endTurn} />
+			return <BoardCell key={`board-cell-${idx}`} cell={cell} position={offset + idx} endTurn={endTurn} gameOver={gameOver} />
 		});
 		return (
 			<tr>

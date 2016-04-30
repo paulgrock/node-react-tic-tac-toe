@@ -29,7 +29,7 @@ const determineWinner = (board) => {
 		return el !== false;
 	});
 	if (full) {
-		// set state to 'draw';
+		return 'draw';
 	}
 
 	// Columns
@@ -57,9 +57,10 @@ const determineWinner = (board) => {
 	}
 
 	if (columnWin || rowWin || diagWin) {
-		console.log(diagWin);
-		// Set game state to win
+		return "It's over!";
 	}
+
+	return 'started';
 };
 
 const reducers = function (state = initialState, action) {
@@ -70,20 +71,11 @@ const reducers = function (state = initialState, action) {
 				action.player,
 				...state.board.slice(action.index + 1)
 			];
-			determineWinner(alteredBoard);
+			const winner = determineWinner(alteredBoard);
 			return Object.assign({}, state, {
 				board: alteredBoard,
-				player: action.player
-			});
-		}
-
-		case types.END_GAME: {
-			return Object.assign({}, state, {
-				todos: [...state.todos, {
-					title: action.title,
-					completed: action.completed,
-					id: action.id
-				}]
+				player: action.player,
+				gameState: winner
 			});
 		}
 

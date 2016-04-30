@@ -12,9 +12,11 @@ const App = React.createClass({
 		this.props.dispatch(endTurn(index, player));
 	},
 	render() {
+		let gameOver = this.props.gameState !== 'started';
 		return (
 			<main className="main-container">
-				<Board board={this.props.board} endTurn={this.handleEndTurn} />
+				<Board board={this.props.board} endTurn={this.handleEndTurn} gameOver={gameOver} />
+				<span>{this.props.gameState}</span>
 			</main>
 		);
 	}
