@@ -4,7 +4,7 @@ import * as scores from './scores';
 const negamax = (board, depth, color = -1) => {
 	let bestVal = -Infinity;
 	let bestMove;
-	const currentPlayer = scores['playerX'] === color ? 'X' : 'O';
+	const currentPlayer = scores.playerX === color ? 'X' : 'O';
 	const calcScore = (board, depth, color) => {
 		const winningScore = determineWinner(board);
 		if (winningScore !== false) {
