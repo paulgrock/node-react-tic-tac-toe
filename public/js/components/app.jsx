@@ -7,7 +7,7 @@ import endTurn from '../actions/end-turn';
 const App = React.createClass({
 	handleEndTurn(e) {
 		e.preventDefault();
-		const index = Number(e.target.value)
+		const index = Number(e.target.value);
 		const player = this.props.player === 'X' ? 'O' : 'X';
 		this.props.dispatch(endTurn(index, player));
 	},

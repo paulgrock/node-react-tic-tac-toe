@@ -27,6 +27,7 @@ const negamax = (board, depth, color = -1) => {
 				}
 			}
 		});
+		return bestMove;
 	};
 	calcScore(board, depth, color);
 	return bestMove;

@@ -36,7 +36,7 @@ const determineWinner = (board) => {
 		}
 		winner = hasWon(column);
 		if (winner) {
-			break;
+			return scores[`player${winner}`];
 		}
 	}
 
@@ -44,16 +44,12 @@ const determineWinner = (board) => {
 	for (let i = 0; i < rowChunks.length; i += 1) {
 		winner = hasWon(rowChunks[i]);
 		if (winner) {
-			break;
+			return scores[`player${winner}`];
 		}
 	}
 
 	if (centerVal && ((board[0] === centerVal && centerVal === board[8]) || (board[2] === centerVal && centerVal === board[6]))) {
-		winner = centerVal;
-	}
-
-	if (winner) {
-		return scores[`player${winner}`];
+		return scores[`player${centerVal}`];
 	}
 
 	return false;
