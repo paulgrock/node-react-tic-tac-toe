@@ -28,6 +28,7 @@ const negamax = (board, depth, color = -1, currentPlayer) => {
 		return bestMove;
 	};
 	calcScore(board, depth, color, currentPlayer);
+	console.log(bestMove);
 	return bestMove;
 };
 

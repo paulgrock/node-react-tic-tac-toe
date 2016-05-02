@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Board from './board.jsx';
-import negaMax from '../negamax';
 import endTurn from '../actions/end-turn';
 import switchPlayer from '../switch-player';
 
@@ -12,17 +11,11 @@ const App = React.createClass({
 		const player = switchPlayer(this.props.player);
 		this.props.dispatch(endTurn(index, player));
 	},
-	negaMax() {
-		const player = switchPlayer(this.props.player);
-		const nM = negaMax(this.props.board, 9, 1, player);
-		this.props.dispatch(endTurn(nM, player));
-	},
 	render() {
 		let gameOver = this.props.winner;
 		return (
 			<main className="main-container">
 				<Board board={this.props.board} endTurn={this.handleEndTurn} gameOver={gameOver} />
-				<button onClick={this.negaMax} disabled={this.props.winner !== false}>AI Move</button>
 				<span>{this.props.gameState}</span>
 			</main>
 		);
