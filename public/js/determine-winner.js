@@ -25,7 +25,7 @@ const determineWinner = (board) => {
 	const rowChunks = chunkArray(board, 3);
 
 	if (boardFull(board)) {
-		return scores['draw'];
+		return scores.draw;
 	}
 
 	// Columns
@@ -52,7 +52,7 @@ const determineWinner = (board) => {
 		return scores[`player${centerVal}`];
 	}
 
-	return false;
+	return winner;
 };
 
 export default determineWinner;

@@ -12,7 +12,7 @@ const App = React.createClass({
 		this.props.dispatch(endTurn(index, player));
 	},
 	negaMax() {
-		const nM = negaMax(this.props.board, 9, 1);
+		const nM = negaMax(this.props.board, 9, 1, this.props.player);
 		const player = this.props.player === 'X' ? 'O' : 'X';
 		this.props.dispatch(endTurn(nM, player));
 	},
@@ -21,7 +21,7 @@ const App = React.createClass({
 		return (
 			<main className="main-container">
 				<Board board={this.props.board} endTurn={this.handleEndTurn} gameOver={gameOver} />
-				<button onClick={this.negaMax}>AI Move</button>
+				<button onClick={this.negaMax} disabled={this.props.winner !== false}>AI Move</button>
 				<span>{this.props.gameState}</span>
 			</main>
 		);
