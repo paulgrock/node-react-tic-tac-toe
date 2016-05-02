@@ -20,11 +20,11 @@ const reducers = function (state = initialState, action) {
 			const winner = determineWinner(alteredBoard);
 			let newGameState = state.gameState;
 			if (winner === scores['draw']) {
-				newGameState = "Draw :("
+				newGameState = "Draw :(";
 			} else if (winner === scores['playerX']) {
-				newGameState = "X wins!"
+				newGameState = "X wins!";
 			} else if (winner === scores['playerO']) {
-				newGameState = "O wins!"			
+				newGameState = "O wins!";
 			}
 			return Object.assign({}, state, {
 				board: alteredBoard,
