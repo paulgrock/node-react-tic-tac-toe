@@ -7,26 +7,29 @@ const negamax = (board, depth, color = -1, currentPlayer) => {
 	let bestMove;
 	const calcScore = (board, depth, color, player) => {
 		const winningScore = determineWinner(board);
-		const emptySpaces = board.filter((val) => val === false);
 		if (depth === 0 || winningScore !== false) {
+			const emptySpaces = board.filter((val) => val === false);
 			if (emptySpaces.length === 1) {
 				board.forEach((cell, idx) => {
 					if (cell === false) {
 						return bestMove = idx;
 					}
 				});
+			} else {
+				return Number(color);
 			}
 		}
 
 
 		board.forEach((cell, idx) => {
 			if (cell === false) {
-				const nextPlayer = switchPlayer(player);
 				const newBoard = [
 					...board.slice(0, idx),
-					nextPlayer,
+					player,
 					...board.slice(idx + 1)
 				];
+				const nextPlayer = switchPlayer(player);
+				console.log(newBoard);
 				const val = -(calcScore(newBoard, depth - 1, -color, nextPlayer));
 				if (val > bestVal) {
 					bestVal = val;
