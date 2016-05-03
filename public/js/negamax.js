@@ -7,9 +7,18 @@ const negamax = (board, depth, color = -1, currentPlayer) => {
 	let bestMove;
 	const calcScore = (board, depth, color, player) => {
 		const winningScore = determineWinner(board);
+		const emptySpaces = board.filter((val) => val === false);
 		if (depth === 0 || winningScore !== false) {
-			return Number(color);
+			if (emptySpaces.length === 1) {
+				board.forEach((cell, idx) => {
+					if (cell === false) {
+						return bestMove = idx;
+					}
+				});
+			}
 		}
+
+
 		board.forEach((cell, idx) => {
 			if (cell === false) {
 				const nextPlayer = switchPlayer(player);

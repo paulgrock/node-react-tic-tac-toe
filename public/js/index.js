@@ -13,9 +13,11 @@ const store = createStore(reducers);
 store.subscribe(() => {
 	const state = store.getState();
 	if (state.player === 'X') {
-		const player = switchPlayer(state.player);
-		const nM = negaMax(state.board, 9, 1, player);
-		store.dispatch(endTurn(nM, player));
+		if (state.winner === false) {
+			const player = switchPlayer(state.player);
+			const nM = negaMax(state.board, 9, 1, player);
+			store.dispatch(endTurn(nM, player));
+		}
 	}
 })
 
